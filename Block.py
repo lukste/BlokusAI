@@ -34,7 +34,6 @@ class Block:
     def turn(self, direction):
         l = self._corners
         N = len(l)
-        new = [[0,0,0], [0,0,0], [0,0,0]]
         if(direction == 'LEFT'):
             for x in range(N // 2):
                 for y in range(N - x - 1):
