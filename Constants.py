@@ -1,0 +1,3 @@
+
+COLORS = ['RED', 'BLUE', 'GREEN', 'YELLOW']
+BLOCK_SIZE = 50
