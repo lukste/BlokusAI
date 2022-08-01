@@ -3,9 +3,8 @@ import Constants as C
 import Block
 
 
-class BlockSet:
-
-    def __int__(self, color):
+class BloSet:
+    def __init__(self):
         print("Running")
         self.b1 = [[1]]
         self.b2 = [[1], [1]]
@@ -40,13 +39,13 @@ class BlockSet:
                [1, 1, 1]]
         self.b18 = [[1, 1, 0],[0, 1, 1]]
 
-        #self.blocks = [getattr(self, 'b'+str(i)) for i in range(1,19)]
-        print('Blocks: ', self.b1)
+        self.blocks = [getattr(self, 'b'+str(i)) for i in range(1,19)]
+        print(self.blocks)
 
     def randomBlock(self, color = None):
         pass
-        # if color == None:
-        #   #  return Block.Block(random.choice(self.blocks), random.choice(color))
-        # else:
-           # return Block.Block(random.choice(self.blocks), color)
+        if color == None:
+            return Block.Block(random.choice(self.blocks), random.choice(C.COLORS))
+        else:
+            return Block.Block(random.choice(self.blocks), color)
 

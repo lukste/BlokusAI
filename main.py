@@ -12,10 +12,10 @@ screen = pygame.display.set_mode((C.BLOCK_SIZE * 20, C.BLOCK_SIZE * 20))
 
 
 running = True
-bs = BlockSet.BlockSet()
-print(bs)
+bs = BloSet()
+#print(bs.randomBlock())
 #print("bs: ", bs.blocks)
-b = Block.Block()
+b = bs.randomBlock()
 
 board = Board.Board()
 while running:

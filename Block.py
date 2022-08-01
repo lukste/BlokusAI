@@ -14,6 +14,8 @@ class Block:
 
         if(rectList == None):
             self.corners = [[0, 1, 0], [1, 1, 1], [1, 0, 0]]
+        else:
+            self.corners = rectList
         self.colour  = colour
         self.orientation = orientation
         self.flipped = flipped
@@ -48,12 +50,12 @@ class Block:
                 self.positionLU = (self.positionLU[0], self.positionLU[1] - 1)
         elif(direction == 'DOWN'):
             print(self.positionRD[0])
-            if (self.positionRD[1] <= 18):
+            if (self.positionRD[1] <= 19):
                 self.positionRD = (self.positionRD[0], self.positionRD[1] + 1)
                 self.positionLU = (self.positionLU[0], self.positionLU[1] + 1)
         elif(direction == 'RIGHT'):
             print(self.positionRD[0])
-            if (self.positionRD[0] <= 18):
+            if (self.positionRD[0] <= 19):
                 self.positionRD = (self.positionRD[0] + 1, self.positionRD[1])
                 self.positionLU = (self.positionLU[0] + 1, self.positionLU[1])
     def turn(self, direction):
