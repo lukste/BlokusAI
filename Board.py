@@ -1,5 +1,6 @@
 import pygame.draw
 import Constants as C
+import numpy as np
 import Block
 
 colors = { "" : 0, 'RED' : 1, 'BLUE' : 2, 'GREEN' : 3, 'YELLOW' : 4}
@@ -8,29 +9,24 @@ colors = { "" : 0, 'RED' : 1, 'BLUE' : 2, 'GREEN' : 3, 'YELLOW' : 4}
 class Board:
     def __init__(self):
         self.n = 20
-        self.status = []
-        for i in range(self.n):
-            self.status.append([])
-            for j in range(self.n):
-                self.status[i].append(0)
-        # for i in range(self.n):
-        #     print()
-        #     for j in range(self.n):
-        #         print(self.status[i][j], end=',')
+        self.status = np.zeros((self.n,self.n),np.int8)
 
     def checkPlace(self, block):
-        x,y  = block.position
+        x,y  = block.positionLU
         col  = colors[block.colour]
         for row_id, row_val in enumerate(block.corners):
             for col_id, col_val in enumerate(row_val):
                 if col_val == True:
                     if(self.status[col_id+x][row_id + y] != 0):
                         return False
-                    if(self.status[col_id+x+1][row_id + y] == col or
+                    try:
+                        if(self.status[col_id+x+1][row_id + y] == col or
                        self.status[col_id+x-1][row_id + y] == col or
                        self.status[col_id+x][row_id + y+1] == col or
                        self.status[col_id+x][row_id + y-1] == col):
-                        return False
+                            return False
+                    except:
+                        pass
         return True
 
     def place(self, block):
@@ -38,7 +34,7 @@ class Board:
             for row_id, row_val in enumerate(block.corners):
                 for col_id, col_val in enumerate(row_val):
                     if col_val == True:
-                        self.status[col_id+block.position[0]][row_id + block.position[1]] = colors[block.colour]
+                        self.status[col_id + block.positionLU[0]][row_id + block.positionLU[1]] = colors[block.colour]
         else:
             print("Err")
 
