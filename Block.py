@@ -1,5 +1,6 @@
+import numpy as np
 import pygame
-import numpy
+import numpy as np
 
 import Constants as C
 
@@ -13,9 +14,9 @@ class Block:
         '''
 
         if(rectList == None):
-            self.corners = [[0, 1, 0], [1, 1, 1], [1, 0, 0]]
+            self.corners = np.array([[1,1,1,1],[0,0,0,1]])
         else:
-            self.corners = rectList
+            self.corners = np.array(rectList)
         self.colour  = colour
         self.orientation = orientation
         self.flipped = flipped
@@ -58,23 +59,11 @@ class Block:
             if (self.positionRD[0] <= 19):
                 self.positionRD = (self.positionRD[0] + 1, self.positionRD[1])
                 self.positionLU = (self.positionLU[0] + 1, self.positionLU[1])
+
     def turn(self, direction):
-        l = self.corners
-        N = len(l)
         if(direction == 'LEFT'):
-            for x in range(N // 2):
-                for y in range(N - x - 1):
-                    temp = l[x][y]
-                    l[x][y] = l[y][N-1-x]
-                    l[y][N-1-x] = l[N - 1 - x][N - 1 - y]
-                    l[N - 1 - x][N - 1 - y] = l[N-1-y][x]
-                    l[N-1-y][x] = temp
+            self.corners = np.rot90(self.corners)
 
         elif(direction == 'RIGHT'):
-            for x in range(N // 2):
-                for y in range(N - x - 1):
-                    temp = l[x][y]
-                    l[x][y] = l[N - 1 - y][x]
-                    l[N - 1 - y][x] = l[N - 1 - x][N - 1 - y]
-                    l[N - 1 - x][N - 1 - y] = l[y][N - 1 - x]
-                    l[y][N - 1 - x] = temp
+            for i in range(3):
+                self.corners = np.rot90(self.corners)
