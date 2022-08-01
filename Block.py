@@ -63,7 +63,9 @@ class Block:
     def turn(self, direction):
         if(direction == 'LEFT'):
             self.corners = np.rot90(self.corners)
+            self.positionRD = (self.positionLU[0] + len(self.corners[0]), self.positionLU[1] + len(self.corners))
 
         elif(direction == 'RIGHT'):
             for i in range(3):
                 self.corners = np.rot90(self.corners)
+            self.positionRD = (self.positionLU[0] + len(self.corners[0]), self.positionLU[1] + len(self.corners))

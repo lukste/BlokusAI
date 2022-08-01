@@ -36,7 +36,7 @@ class BloSet:
         self.b16 = [[0, 1, 0],
                [1, 1, 1]]
         self.b17 = [[1, 0, 0],
-               [1, 1, 1]]
+                    [1, 1, 1]]
         self.b18 = [[1, 1, 0],[0, 1, 1]]
 
         self.blocks = [getattr(self, 'b'+str(i)) for i in range(1,19)]

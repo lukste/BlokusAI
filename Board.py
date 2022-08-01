@@ -35,8 +35,10 @@ class Board:
                 for col_id, col_val in enumerate(row_val):
                     if col_val == True:
                         self.status[col_id + block.positionLU[0]][row_id + block.positionLU[1]] = colors[block.colour]
+            return True
         else:
-            print("Err")
+            return False
+
 
     def draw(self, screen):
         for i in range(self.n):

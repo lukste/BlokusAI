@@ -38,7 +38,8 @@ while running:
             if (event.key == pygame.K_d):
                 b.turn("RIGHT")
             if (event.key == pygame.K_RETURN):
-                board.place(b)
+                if board.place(b):
+                    b = bs.randomBlock()
             #pygame.draw.rect(screen, (255, 0, 0), pygame.Rect(0, 0, 50, 50))
     screen.fill((0, 0, 0))
 
