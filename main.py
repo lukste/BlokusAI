@@ -1,5 +1,6 @@
 import pygame
 import Block
+import BlockSet
 import Board
 from BlockSet import *
 import Constants as C
@@ -11,8 +12,8 @@ screen = pygame.display.set_mode((C.BLOCK_SIZE * 20, C.BLOCK_SIZE * 20))
 
 
 running = True
-bs = BlockSet('RED')
-#print(bs.b1)
+bs = BlockSet.BlockSet()
+print(bs)
 #print("bs: ", bs.blocks)
 b = Block.Block()
 

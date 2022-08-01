@@ -5,7 +5,7 @@ import Block
 
 class BlockSet:
 
-    def __int__(self, colour):
+    def __int__(self, color):
         print("Running")
         self.b1 = [[1]]
         self.b2 = [[1], [1]]
@@ -49,3 +49,4 @@ class BlockSet:
         #   #  return Block.Block(random.choice(self.blocks), random.choice(color))
         # else:
            # return Block.Block(random.choice(self.blocks), color)
+
