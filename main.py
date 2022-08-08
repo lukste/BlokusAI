@@ -16,7 +16,7 @@ running = True
 bs = BloSet()
 #print(bs.randomBlock())
 #print("bs: ", bs.blocks)
-b = Block.Block([[1]])
+
 
 p1 = Player.Player("RED")
 p2 = Player.Player("BLUE")
@@ -26,7 +26,7 @@ p4 = Player.Player("YELLOW")
 players = [p1,p2,p3,p4]
 players_cycle = cycle(players)
 current_player = next(players_cycle)
-b = current_player.next_block()
+b = current_player.next_block(position=(0,0))
 
 
 
@@ -57,9 +57,9 @@ while running:
                     current_player = next(players_cycle)
                     print("NewPlayer")
                     b = current_player.next_block()
-            if(event.type == pygame.MOUSEWHEEL):
-                print(event)
-                b = current_player.next_block()
+        if(event.type == pygame.MOUSEWHEEL):
+            print(event)
+            b = current_player.next_block(position=(b.positionRD[0], b.positionRD[1]))
         clock.tick(60)
             #pygame.draw.rect(screen, (255, 0, 0), pygame.Rect(0, 0, 50, 50))
     screen.fill((0, 0, 0))
