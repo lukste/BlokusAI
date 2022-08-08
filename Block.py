@@ -76,11 +76,11 @@ class Block:
 
     def move(self, direction):
         if(direction == "LEFT"):
-            if (self.positionLU[0] >= 1):
+            if (self.positionLU[0] >= 2):
                 self.positionRD = (self.positionRD[0] - 1, self.positionRD[1])
                 self.positionLU = (self.positionLU[0] - 1, self.positionLU[1])
         elif(direction == 'UP'):
-            if(self.positionLU[1] >= 1):
+            if(self.positionLU[1] >= 2):
                 self.positionRD = (self.positionRD[0], self.positionRD[1] - 1)
                 self.positionLU = (self.positionLU[0], self.positionLU[1] - 1)
         elif(direction == 'DOWN'):

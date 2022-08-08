@@ -5,6 +5,7 @@ class Player:
 
     def __init__(self, color = 'RED'):
         self.blocks = BlockSet.BloSet().get_block_set(color)
+        self.blocks = self.blocks[::-1]
         self.blocks_cycle = cycle(self.blocks)
         self.color = color
         self.i = 0

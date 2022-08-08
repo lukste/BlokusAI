@@ -56,9 +56,9 @@ while running:
                     current_player = next(players_cycle)
                     b = current_player.next_block()
                     b.stick(board)
-        if(event.type == pygame.MOUSEWHEEL):
-            b = current_player.next_block(position=(b.positionLU[0], b.positionLU[1]))
-            b.stick(board)
+            if(event.key == pygame.K_q):
+                b = current_player.next_block(position=(b.positionLU[0], b.positionLU[1]))
+                b.stick(board)
         clock.tick(60)
     screen.fill((0, 0, 0))
 
