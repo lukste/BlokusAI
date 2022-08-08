@@ -24,14 +24,6 @@ class Board:
 
 
     def setup(self):
-        # rb = Block.Block([[1]], 'RED', position=(0,0))
-        # self.place(rb)
-        # bb = Block.Block([[1]], 'BLUE', position=(self.n -1, 0))
-        # self.place(bb)
-        # gb = Block.Block([[1]], 'GREEN', position=(0, self.n -1 ))
-        # self.place(gb)
-        # yb = Block.Block([[1]], 'YELLOW', position=(self.n-1, self.n-1))
-        # self.place(yb)
         self.status[0][0] = 1
         self.status[self.n - 1][0] = 2
         self.status[0][self.n - 1] = 3
@@ -48,8 +40,6 @@ class Board:
                     if (self.status[col_id + x][row_id + y] != 0):
                         return False
                     try:
-                        print("checking", col_id + x + 1, row_id + y + 1, self.status[col_id + x + 1][row_id + y + 1])
-                        print("checking", col_id + x - 1, row_id + y -1, self.status[col_id + x - 1][row_id + y - 1])
                         if (self.status[col_id + x + 1][row_id + y + 1] == col or
                             self.status[col_id + x - 1][row_id + y - 1] == col or
                             self.status[col_id + x + 1][row_id + y - 1] == col or

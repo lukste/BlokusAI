@@ -5,7 +5,6 @@ import Block
 
 class BloSet:
     def __init__(self):
-        print("Running")
         self.b1 = [[1]]
         self.b2 = [[1], [1]]
         self.b3 = [[1, 0],[1, 1]]
@@ -40,7 +39,6 @@ class BloSet:
         self.b18 = [[1, 1, 0],[0, 1, 1]]
 
         self.blocks = [getattr(self, 'b'+str(i)) for i in range(1,19)]
-        print(self.blocks)
 
     def get_block_set(self, color):
         block_list = [Block.Block(shape, color) for shape in self.blocks ]

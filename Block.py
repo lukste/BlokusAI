@@ -4,7 +4,7 @@ import numpy as np
 
 import Constants as C
 
-
+colors = { "" : 0, 'RED' : 1, 'BLUE' : 2, 'GREEN' : 3, 'YELLOW' : 4}
 class Block:
 
     def __init__(self, rectList = None, colour = 'RED', orientation = 'N', flipped = True, position = (0,0) ):
@@ -39,6 +39,34 @@ class Block:
                          (C.BLOCK_SIZE * self.positionLU[0], C.BLOCK_SIZE * self.positionLU[1], 5, 5))
         pygame.draw.rect(screen, (0, 0, 0),
                          (C.BLOCK_SIZE * self.positionRD[0], C.BLOCK_SIZE * self.positionRD[1], 5, 5))
+
+    def stick(self, board):
+        print("stick fun - ")
+        for i in range(board.n):
+            for j in range(board.n):
+                val = board.status[i][j]
+                if(val == colors[self.colour]):
+                    print("founded val == colour in i", i, "j", j)
+                    if(i+1<=20 and j+1 <= 20):
+                        if(board.status[i+1][j+1] == 0):
+                            print("Setting po LD")
+                            self.setBlockPos((i+1, j+1))
+                            return 0
+                    if(i+1<=20 and j-1 >= 0):
+                        if(board.status[i + 1][j - 1] == 0):
+                            print("Setting po RD")
+                            self.setBlockPos((i + 1, j - 1))
+                            return 0
+                    if(i-1 >= 0 and j-1 >= 0):
+                        if (board.status[i - 1][j - 1] == 0):
+                            print("Setting po skosie")
+                            self.setBlockPos((i - 1, j - 1))
+                            return 0
+                    if(i-1 >= 0 and j+1 <= 20):
+                        if (board.status[i - 1][j + 1] == 0):
+                            print("Setting po skosie")
+                            self.setBlockPos((i - 1, j + 1))
+                            return 0
 
     def flipp(self):
         new = []

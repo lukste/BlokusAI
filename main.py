@@ -27,10 +27,8 @@ players = [p1,p2,p3,p4]
 players_cycle = cycle(players)
 current_player = next(players_cycle)
 b = current_player.next_block(position=(0,0))
-
-
-
 board = Board.Board()
+b.stick(board)
 
 
 while running:
@@ -54,10 +52,13 @@ while running:
                 b.turn("RIGHT")
             if (event.key == pygame.K_RETURN):
                 if board.place(b):
+                    current_player.place_block(b)
                     current_player = next(players_cycle)
                     b = current_player.next_block()
+                    b.stick(board)
         if(event.type == pygame.MOUSEWHEEL):
             b = current_player.next_block(position=(b.positionLU[0], b.positionLU[1]))
+            b.stick(board)
         clock.tick(60)
     screen.fill((0, 0, 0))
 

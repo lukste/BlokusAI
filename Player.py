@@ -12,7 +12,8 @@ class Player:
 
 
     def place_block(self, block):
-        self.blocks.pop(block)
+        self.blocks.remove(block)
+        self.blocks_cycle = cycle(self.blocks)
 
     def next_block(self, position=(0,0)):
         b = next(self.blocks_cycle)
