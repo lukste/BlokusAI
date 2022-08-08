@@ -22,6 +22,13 @@ class Block:
         self.flipped = flipped
         self.positionLU = position
         self.positionRD = (self.positionLU[0] + len(self.corners[0]), self.positionLU[1] + len(self.corners))
+        category = 0
+        for row in self.corners:
+            for val in row:
+                category += val
+        self.category = category
+
+
 
     def setBlockPos(self, position = (0,0)):
         self.positionLU = position
@@ -41,30 +48,24 @@ class Block:
                          (C.BLOCK_SIZE * self.positionRD[0], C.BLOCK_SIZE * self.positionRD[1], 5, 5))
 
     def stick(self, board):
-        print("stick fun - ")
         for i in range(board.n):
             for j in range(board.n):
                 val = board.status[i][j]
                 if(val == colors[self.colour]):
-                    print("founded val == colour in i", i, "j", j)
                     if(i+1<=20 and j+1 <= 20):
                         if(board.status[i+1][j+1] == 0):
-                            print("Setting po LD")
                             self.setBlockPos((i+1, j+1))
                             return 0
                     if(i+1<=20 and j-1 >= 0):
                         if(board.status[i + 1][j - 1] == 0):
-                            print("Setting po RD")
                             self.setBlockPos((i + 1, j - 1))
                             return 0
                     if(i-1 >= 0 and j-1 >= 0):
                         if (board.status[i - 1][j - 1] == 0):
-                            print("Setting po skosie")
                             self.setBlockPos((i - 1, j - 1))
                             return 0
                     if(i-1 >= 0 and j+1 <= 20):
                         if (board.status[i - 1][j + 1] == 0):
-                            print("Setting po skosie")
                             self.setBlockPos((i - 1, j + 1))
                             return 0
 

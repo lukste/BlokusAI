@@ -44,7 +44,6 @@ class Board:
                             self.status[col_id + x - 1][row_id + y - 1] == col or
                             self.status[col_id + x + 1][row_id + y - 1] == col or
                             self.status[col_id + x - 1][row_id + y + 1] == col ):
-
                             return True
                     except:
                         pass
