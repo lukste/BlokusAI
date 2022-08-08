@@ -42,6 +42,11 @@ class BloSet:
         self.blocks = [getattr(self, 'b'+str(i)) for i in range(1,19)]
         print(self.blocks)
 
+    def get_block_set(self, color):
+        block_list = [Block.Block(shape, color) for shape in self.blocks ]
+        return block_list
+
+
     def randomBlock(self, color = None):
         pass
         if color == None:

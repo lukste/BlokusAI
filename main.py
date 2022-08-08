@@ -2,22 +2,37 @@ import pygame
 import Block
 import BlockSet
 import Board
+import Player
 from BlockSet import *
 import Constants as C
-
+from itertools import cycle
 
 pygame.init()
 
-screen = pygame.display.set_mode((C.BLOCK_SIZE * 20, C.BLOCK_SIZE * 20))
+screen = pygame.display.set_mode((C.BLOCK_SIZE * 22, C.BLOCK_SIZE * 22))
 
-
+clock = pygame.time.Clock()
 running = True
 bs = BloSet()
 #print(bs.randomBlock())
 #print("bs: ", bs.blocks)
-b = bs.randomBlock()
+b = Block.Block([[1]])
+
+p1 = Player.Player("RED")
+p2 = Player.Player("BLUE")
+p3 = Player.Player("GREEN")
+p4 = Player.Player("YELLOW")
+
+players = [p1,p2,p3,p4]
+players_cycle = cycle(players)
+current_player = next(players_cycle)
+b = current_player.next_block()
+
+
 
 board = Board.Board()
+
+
 while running:
     for event in pygame.event.get():
         if(event.type == pygame.QUIT):
@@ -39,7 +54,13 @@ while running:
                 b.turn("RIGHT")
             if (event.key == pygame.K_RETURN):
                 if board.place(b):
-                    b = bs.randomBlock()
+                    current_player = next(players_cycle)
+                    print("NewPlayer")
+                    b = current_player.next_block()
+            if(event.type == pygame.MOUSEWHEEL):
+                print(event)
+                b = current_player.next_block()
+        clock.tick(60)
             #pygame.draw.rect(screen, (255, 0, 0), pygame.Rect(0, 0, 50, 50))
     screen.fill((0, 0, 0))
 

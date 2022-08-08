@@ -1,4 +1,18 @@
+import BlockSet
+from itertools import cycle
+
 class Player:
 
     def __init__(self, color = 'RED'):
-        pass
+        self.blocks = BlockSet.BloSet().get_block_set(color)
+        self.blocks_cycle = cycle(self.blocks)
+        self.color = color
+        self.i = 0
+
+
+
+    def place_block(self, block):
+        self.blocks.pop(block)
+
+    def next_block(self):
+        return next(self.blocks_cycle)

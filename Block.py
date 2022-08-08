@@ -51,12 +51,12 @@ class Block:
                 self.positionLU = (self.positionLU[0], self.positionLU[1] - 1)
         elif(direction == 'DOWN'):
             print(self.positionRD[0])
-            if (self.positionRD[1] <= 19):
+            if (self.positionRD[1] <= 20):
                 self.positionRD = (self.positionRD[0], self.positionRD[1] + 1)
                 self.positionLU = (self.positionLU[0], self.positionLU[1] + 1)
         elif(direction == 'RIGHT'):
             print(self.positionRD[0])
-            if (self.positionRD[0] <= 19):
+            if (self.positionRD[0] <= 20):
                 self.positionRD = (self.positionRD[0] + 1, self.positionRD[1])
                 self.positionLU = (self.positionLU[0] + 1, self.positionLU[1])
 
