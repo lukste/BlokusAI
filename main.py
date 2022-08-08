@@ -55,13 +55,10 @@ while running:
             if (event.key == pygame.K_RETURN):
                 if board.place(b):
                     current_player = next(players_cycle)
-                    print("NewPlayer")
                     b = current_player.next_block()
         if(event.type == pygame.MOUSEWHEEL):
-            print(event)
-            b = current_player.next_block(position=(b.positionRD[0], b.positionRD[1]))
+            b = current_player.next_block(position=(b.positionLU[0], b.positionLU[1]))
         clock.tick(60)
-            #pygame.draw.rect(screen, (255, 0, 0), pygame.Rect(0, 0, 50, 50))
     screen.fill((0, 0, 0))
 
     board.draw(screen)
